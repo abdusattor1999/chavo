@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Edit subject
+{% endblock title %}
+
+{% block content %}
+    <div class='main'>
+        <form action="{% url 'posts:edit_subject' subject.id %}" method="post" class="form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn">Save</button>
+            <a href="{{ request.META.HTTP_REFERER }}" class="btn atd"><img src="{% static 'back-icon.svg' %}" class="icon">back</a>
+        </form>
+    </div>
+{% endblock content %}

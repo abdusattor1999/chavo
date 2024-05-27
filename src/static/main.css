@@ -1,0 +1,138 @@
+body{
+    box-sizing: border-box;
+    font-family:sans-serif;
+    font-size: 16px;
+    color:  rgba(21, 21, 21, 0.907);
+    background:#ffffff;
+    margin: 0;
+    padding: 0;
+}
+nav{
+    background: rgba(0, 0, 0, 0.813);
+    color: rgba(1, 130, 1, 0.857);
+    padding: 30px 200px;
+    border-bottom: 2px solid rgba(44, 64, 44, 0.944);
+}
+.main{
+    color: #221d1de3;
+    padding: 50px 200px;
+}
+.grid-c2{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    text-align: left;
+    justify-content: start;
+    gap: 30px;
+}
+.flex-start{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 10px;
+}
+.subject{
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    border: 3px solid rgba(75, 91, 75, 0.863);
+    padding: 20px;
+}
+.white{
+    color: #221d1de3;
+}
+
+.detail{
+    padding: 50px 200px;
+
+}
+.btn{
+    background:white;
+    color: rgba(2, 166, 2, 0.908);
+    font-weight: 600;
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: 2px solid rgba(2, 166, 2, 0.908) !important;
+    cursor: pointer;
+    border: none;
+}
+.btn-danger{
+    background: rgba(255, 0, 0, 0.908);
+    color: white;
+    font-weight: 600;
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: 2px solid rgba(255, 0, 0, 0.908) !important;
+    cursor: pointer;
+    border: none;
+}
+.atd{
+    text-decoration: none;
+}
+.block{
+    display: block;
+}
+
+.icon{
+    width: 15px;
+    height: 15px;
+    margin: 0;
+    padding: 0;
+}
+.form input, textarea{
+    padding: 5px;
+    overflow: hidden;
+    border: 2px solid rgba(2, 166, 2, 0.908);
+    border-radius: 5px;
+}
+@media screen and (max-width: 1080px) {
+    nav{
+        padding: 30px 80px;
+    }
+    .main{
+        padding: 50px 80px;
+    }
+}
+@media screen and (max-width: 768px) {
+    nav{
+        padding: 20px 40px;
+    }
+    .main{
+        display: grid;
+        grid-template-columns: 100%;
+        gap: 30px;
+        background: rgba(0, 0, 0, 0.944);
+        color:rgba(2, 166, 2, 0.908);
+        padding: 40px 40px;
+    }                   
+    
+}
+
+
+/*  */
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted rgba(0, 0, 0, 0.68);
+    transition: 0.03s;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: rgba(0, 0, 0, 0.759);
+    color: #ffffffd1;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    font-weight: normal;
+    transition: 0.03s;
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+}
+  
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}

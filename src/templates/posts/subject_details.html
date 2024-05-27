@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+{{subject.name}}
+{% endblock title %}
+
+{% block content %}
+
+    <div class="main">
+        <h2>Name: {{ subject.name }}</h2>
+        <a href="{% url 'posts:edit_subject' subject.id %}" class="btn atd tooltip">
+            <span class="tooltiptext">Edit subject</span>
+            <img src="{% static 'edit-outline.svg' %}" alt="" class='icon'>
+        </a>
+        <a href="{% url 'posts:delete_subject' subject.id %}" class="btn-danger atd tooltip">
+            <img src="{% static 'delete-icon.svg' %}" alt="" class='icon'>
+            <span class="tooltiptext">Delete subject</span>
+        </a>
+
+        {% if subject.topics.exists %}
+            <h3>Topics in this subject:</h3>
+            {% for topic in subject.topics.all %}
+                <div class="flex-start">
+                    <a href="{% url 'posts:topic_details' subject.id topic.id %}" class="atd white block">
+                        {{ topic.title }}
+                    </a>
+                    <div>
+                        <a href="{% url 'posts:edit_topic' topic.id %}" class="atd tooltip">
+                            <span class="tooltiptext">Edit topic</span>
+                            <img src="{% static 'edit-outline.svg' %}" alt="" class="icon">
+                        </a>
+                        <a href="{% url 'posts:delete_topic' topic.id %}" class="atd tooltip">
+                            <span class="tooltiptext">Delete topic</span>
+                            <img src="{% static 'delete-icon.svg' %}" alt="" class="icon">
+                        </a>
+                    </div>
+                </div>        
+            {% endfor %}
+        
+        {% else %}
+            <h3>There is no any topic in this subject !</h3>
+        {% endif %}
+        <br>
+        <a href="{% url 'posts:add_topic' subject.id %}" class="btn atd">
+            Add topic
+        </a>
+        <a href="{% url 'posts:dashboard' %}" class="btn atd">
+            <img src="{% static 'back-icon.svg' %}" class="icon">
+            back
+        </a>
+    </div>
+
+{% endblock content %}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}
+Dashboard
+{% endblock title %}
+
+{% block content %}
+
+<div class="main">
+    <h1>Subjects</h1>
+    {% for subject in subjects %}
+        <h3>
+            <a href="{% url 'posts:subject_details' subject.id %}" class="atd white">
+                {{ subject.name }}
+            </a>
+        </h3>   
+    {% endfor %}
+    <a href="{% url 'posts:add_subject' %}" class="btn atd">Add subject</a>
+    <a href="{% url 'posts:subjects' %}" class="btn atd">Home</a>
+</div>
+{% endblock content %}

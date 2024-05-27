@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Chavo   
+{% endblock title %}
+
+{% block content %}
+    <div class="main">
+        <div class="grid-c2">
+            {% for subject in subjects %}
+            <div class="subject">
+                <h2 class="white">{{ subject.name }}</h2>
+                {% for topic in subject.topics.all %}
+                    <a href="{% url 'posts:topic_details' subject.id topic.id %}" rel="noopener noreferrer" class="atd white">
+                        {{ topic.title }}
+                    </a>
+                {% endfor %}
+            </div>
+            {% endfor %}
+        </div>
+        <div class="grid-c1">
+        </div>
+    </div>
+{% endblock content %}

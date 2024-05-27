@@ -1,0 +1,4 @@
+env/
+media/
+src/media
+src/db.sqlite3

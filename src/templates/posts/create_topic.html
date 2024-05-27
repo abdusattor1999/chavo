@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+create topic
+{% endblock title %}
+
+{% block content %}
+<div class="main">
+    <h2>Create topic</h2>
+    {% if error %}
+      <p class="error">{{ error }}</p>
+    {% endif %}
+    <form action="{% url 'posts:add_topic' subject_id %}" method="post" class="form">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="btn atd">Save</button>
+      <a href="{{ request.META.HTTP_REFERER }}" class="btn atd">
+        <img src="{% static 'back-icon.svg' %}" class="icon">
+        back
+      </a>
+    </form>
+  </div>
+
+{% endblock content %}
