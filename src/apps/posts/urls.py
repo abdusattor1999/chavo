@@ -6,6 +6,7 @@ app_name = 'posts'
 urlpatterns = [
     path("", subjects, name="subjects"),
     path("dashboard/", dashboard, name="dashboard"),
+    path("login/", login_view, name="login"),
 
     path("create-subject/", create_subject, name="add_subject"),
     path("subject/<int:pk>", subject_details, name="subject_details"),

@@ -1,8 +1,27 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Subject, Topic
-from .forms import SubjectForm, TopicForm
+from .forms import SubjectForm, TopicForm, LoginForm
+from django.contrib.auth import authenticate, login
 
+
+def login_view(request):
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('posts:dashboard')
+            else:
+                form.add_error(None, "Invalid username or password.")
+    else:
+        form = LoginForm()
+
+    context = {'form': form}
+    return render(request, 'dashboard/login.html', context)
 
 def subjects(request):
     subject_qs = Subject.objects.all().prefetch_related("topics")
@@ -16,7 +35,7 @@ def dashboard(request):
         subject_list = Subject.objects.all()
         return render(request, "dashboard/home.html", {"subjects":subject_list})
     else:
-        return redirect("login")
+        return redirect("posts:login")
 
 
 
